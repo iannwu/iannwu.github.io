@@ -127,10 +127,10 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
   }*/
 }
 
-@media (max-width: 1079px) {
+/*@media (max-width: 1079px) {
   .page1, .page3 { 
     min-width: 960px; min-height: 600px;
-  } 
+  } */
 /*  .paper_h { 
     font-size: 51px;
   }
