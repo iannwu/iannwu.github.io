@@ -1,0 +1,458 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Texture | Read what matters</title>
+<!-- 	<link rel="shortcut icon" id="favicon" href="favicon.png">  -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.onepage-scroll.js"></script>
+  <link href='assets/css/onepage-scroll.css' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <style>
+
+    @font-face {
+    font-family: Aller_Bd;
+    src: local(Aller_Bd), url('assets/Aller_Bd.ttf') format('opentype');
+    }
+
+
+    html {
+      height: 100%;
+    }
+    body {
+      background: #000;
+      padding: 0;
+      text-align: center;
+      font-family: 'HelveticaNeue-Thin';
+      position: relative;
+      margin: 0;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .wrapper {
+    	height: 100% !important;
+    	height: 100%;
+    	margin: 0 auto; 
+    	overflow: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    .pointer {
+      color: #9b59b6;
+      font-family: 'Pacifico', cursive;
+      font-size: 30px;
+      margin-top: 15px;
+    }
+
+    .main {
+      float: left;
+      width: 100%;
+      margin: 0 auto;
+    }
+    
+    .reload.bell {
+      font-size: 12px;
+      padding: 20px;
+      width: 45px;
+      text-align: center;
+      height: 47px;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+    }
+    
+    .reload.bell #notification {
+      font-size: 25px;
+      line-height: 140%;
+    }
+    
+    .reload, .btn{
+      display: inline-block;
+      border: 4px solid #A2261E;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      background: #CC3126;
+      display: inline-block;
+      line-height: 100%;
+      padding: 0.7em;
+      text-decoration: none;
+      color: #fff;
+      width: 100px;
+      line-height: 140%;
+      font-size: 17px;
+      font-family: open sans;
+      font-weight: bold;
+    }
+    .reload:hover{
+      background: #444;
+    }
+    .btn {
+      width: 200px;
+      color: rgb(255, 255, 255);
+      border: 4px solid rgb(0, 0, 0);
+      background: rgba(3, 3, 3, 0.75);
+    }
+    .clear {
+      width: auto;
+    }
+    .btn:hover, .btn:hover {
+      background: #444;
+    }
+    .btns {
+      width: 410px;
+      margin: 50px auto;
+    }
+    .credit {
+      text-align: center;
+      color: rgba(0,0,0,0.5);
+      padding: 10px;
+      width: 410px;
+      clear: both;
+    }
+    .credit a {
+      color: rgba(0,0,0,0.85);
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      display: block;
+      padding: 7px;
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: bold;
+      font-size: 13px;
+      color: #000;
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+    }
+
+    .back:hover {
+      color: black;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    
+    header {
+      position: relative;
+      z-index: 10;
+    }
+
+    .main section.page1 {
+      background: url(assets/img/bkg_1.jpg) no-repeat center;
+      background-size: cover;
+      position:relative;
+      min-width: 1000px;
+      min-height: 700px;
+      -webkit-background-size: cover;
+    }
+
+    .main section.page2 {
+      background: url(assets/img/bkg_2.jpg) no-repeat center;
+      background-size: cover;
+      position:relative;
+      min-width: 1000px;
+      min-height: 700px;
+      -webkit-background-size: cover;
+    }
+
+    .main section.page3 {
+      background:url(assets/img/bkg_3.jpg) no-repeat center;
+      background-size: cover;
+      position:relative;
+      min-width: 1000px;
+      min-height: 700px;
+      -webkit-background-size: cover;
+    }
+
+    .main .page_container {
+      font-family: helvetica, arial, sans-serif;
+      z-index: 3;
+      position: absolute;
+      left: 100px;
+      top: calc(50% - 221px/2);
+      text-align: left;
+      word-spacing: -1px;
+    }
+
+    .page2 .page_container {
+      left: 50%;
+      text-align: left;
+      min-width: 550px; 
+      right: 120px;
+      top: calc(50% - 304px/2);
+    }
+
+    .page3 .page_container {
+      left: 52%;
+      text-align: left;
+      min-width: 550px;       
+      right: 120px;
+      top: calc(50% - 200px/2);
+    }
+
+    #logo {
+      font-family: Aller_Bd;
+      display: inline;
+      font-size: 64px;
+      line-height: 0;
+      color: #fff;
+    }
+
+    .main .texture_h {
+      font-family: 'Helvetica Neue Thin', 'HelveticaNeue-Thin', 'helvetica neue', helvetica, arial, 'lucida grande', sans-serif;
+      text-align: left;
+      line-height: 1.34;
+      font-size: 61px;
+      font-weight: 100;
+      color: #fff;
+      display: inline;
+    }
+
+    .main .texture_p {
+      font-size: 26px;
+      font-weight: 200;
+      line-height: 32px;
+      margin-top: 12px;
+      color: #fff;
+    }
+
+    .page2 .texture_h {
+      text-align: left;
+      line-height: 1.1;
+      font-size: 61px;
+      font-weight: 100;
+      color: #333;
+      display: inline;
+    }
+
+    .page2 .texture_p {
+      font-size: 23px;
+      font-weight: 200;
+      line-height: 32px;
+      margin-top: 19px;
+      color: #333;
+    }
+
+    .page3 .texture_h {
+      text-align: left;
+      line-height: 1.1;
+      font-size: 61px;
+      font-weight: 100;
+      color: #fff;
+      display: inline;
+    }
+
+    .page3 .texture_p {
+      font-size: 26px;
+      font-weight: 200;
+      line-height: 32px;
+      margin-top: 19px;
+      color: #fff`;
+    }
+
+    .texture_downloadImage, .texture_downloadText {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .texture_downloadText {
+      text-transform: uppercase;
+      margin-top: 40px;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 1;
+      word-spacing: 1px;
+      color: #fff;
+      padding: 10px 15px 10px 15px;
+      background: none;
+      border: 1px solid white;
+      border-radius: 3px;
+    }
+
+    .texture_downloadText:hover{
+      color: rgba(109,91,79,0.9);
+      background: rgba(255,255,255,1)
+
+    }
+
+    .main .texture_h + .main .texture_p {
+      font-size: 26px;
+      font-weight: 200px;
+      line-height: 32px;
+      margin-top: 12px;
+    }
+
+    .viewing-page-2 .back{
+      background: rgba(0, 0, 0, 0.25);
+      color: #FFF;
+      }
+
+    
+    body.disabled-onepage-scroll .onepage-wrapper  section {
+      min-height: 100%;
+      height: auto;
+    }
+    
+    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+      padding: 20px;
+      margin-top: 150px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    body.disabled-onepage-scroll  section .page_container h1{
+      text-align: center;
+      font-size: 50px;
+    }
+    body.disabled-onepage-scroll section .page_container h2, body.disabled-onepage-scroll section .page_container .credit, body.disabled-onepage-scroll section .page_container .btns{
+      text-align: center;
+      width: 100%;
+    }
+    
+    body.disabled-onepage-scroll .main section.page1 > img {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+    }
+    
+    body.disabled-onepage-scroll .main section > img {
+      position: relative;
+      max-width: 80%;
+      bottom: 0;
+    }
+    body.disabled-onepage-scroll code {
+      width: 95%;
+      margin: 0 auto 25px;
+      float: none;
+      overflow: hidden;
+    }
+    
+    body.disabled-onepage-scroll .main section.page3 .page_container {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      right: 0;
+    }
+
+    @media (max-width: 1151px) {
+      .main section .page1 {
+        min-width: 800px;
+        min-height: 675px;
+      }
+      .main .texture_h {
+        font-size: 58px;
+      }
+
+      .main .texture_p {
+        font-size: 23px;
+        line-height: 29px;
+      }
+
+      .main .texture_downloadText {
+        font-size: 12px;
+      }
+
+      .page2 .texture_h {
+      font-size: 53px;
+      }
+
+      .page2 .texture_p {
+      font-size: 21px;
+      }
+
+    }
+
+    @media (max-width: 1079px) {
+      .main section .page1 {
+        min-width: 960px;
+        min-height: 600px;
+      }
+      .main .texture_h {
+        font-size: 51px;
+      }
+
+      .main .texture_p {
+        font-size: 21px;
+        line-height: 26px;
+      }
+
+      .main .texture_downloadText {
+        font-size: 10px;
+      }
+
+      .page2 .texture_h {
+      font-size: 48px;
+      }
+
+      .page2 .texture_p {
+      font-size: 20px;
+      }
+
+    }
+
+	</style>
+	<script>
+	  $(document).ready(function(){
+      $(".main").onepage_scroll({
+        sectionContainer: "section",
+        responsiveFallback: 000,
+        loop: true
+      });
+		});	
+	</script>
+</head>
+<body>
+  <div class="wrapper">
+	  <div class="main">
+      <section class="page1">
+        <div class="page_container">
+          
+          <div class="texture_h">Introducing </div>
+          <div id="logo">texture</div>
+          <div class="texture_p">Discover news that matter to you,<br/>all in one simple interface.</div>
+          
+<!--           <a class="texture_download" href="" target="_blank"> -->
+<!--           <img class="texture_downloadImage img" src="download.png" alt="" /> -->
+          <span class="texture_downloadText">Notify me for beta </span>
+  	    
+        </div>
+
+      </section>
+	    
+	    <section class="page2">
+	      <div class="page_container">
+          <div class="texture_h">Our attempt to rethink<br/> news reading </div>
+          <div class="texture_p">Texture is crafted with strong emphasis on design and<br/> user experience. With our hype-simple card interface,<br/> navigation between views is as seamless as swipping<br/> a deck of cards.
+          </div>
+	      </div>
+      </section>
+	    
+	    <section class="page3">
+	      <div class="page_container">
+          <div class="texture_h">Coming soon on iOS</div>
+          <div class="texture_p">Be the first to try out this revolutionary news<br/> reading experience.</div>
+          <span class="texture_downloadText">Notify me for beta </span>
+
+  	    </div>
+      </section>
+    </div>
+<!--     <a class="back" href="http://www.">texture app</a> -->
+  </div>
+</body>
+</html>
